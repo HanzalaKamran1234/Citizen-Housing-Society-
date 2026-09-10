@@ -10,29 +10,32 @@
   html {
     scroll-behavior: smooth;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
-    background-color: #080A0B;
-    color: #E5E9EC;
+    background-color: #0A0D0A;
+    color: #F7F8F4;
     overflow-x: hidden;
-    selection-background-color: #1B6452;
-    selection-color: #FFFFFF;
+    width: 100%;
+    selection-background-color: #89C742;
+    selection-color: #0A0D0A;
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 7px;
   }
   ::-webkit-scrollbar-track {
-    background: #0E1113;
+    background: #0A0D0A;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1B6452;
+    background: #2A4212;
     border-radius: 4px;
+    border: 1px solid rgba(137, 199, 66, 0.2);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #237E67;
+    background: #89C742;
   }
 }
 
@@ -41,47 +44,41 @@
     text-wrap: balance;
   }
   
-  .glass-card {
-    background: rgba(19, 23, 26, 0.75);
+  .glass-dark {
+    background: rgba(17, 22, 17, 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
   
-  .glass-card-emerald {
-    background: linear-gradient(135deg, rgba(14, 54, 44, 0.4) 0%, rgba(11, 37, 30, 0.25) 100%);
+  .glass-brand {
+    background: linear-gradient(135deg, rgba(137, 199, 66, 0.12) 0%, rgba(17, 22, 17, 0.8) 100%);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(50, 155, 129, 0.2);
+    border: 1px solid rgba(137, 199, 66, 0.3);
   }
 
-  .glass-nav {
-    background: rgba(8, 10, 11, 0.85);
+  .glass-navbar {
+    background: rgba(10, 13, 10, 0.88);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .gold-gradient-text {
-    background: linear-gradient(135deg, #DECCA8 0%, #CBB084 50%, #FAF8F4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .emerald-gradient-text {
-    background: linear-gradient(135deg, #8CD5C2 0%, #329B81 50%, #1B6452 100%);
+  .brand-gradient-text {
+    background: linear-gradient(135deg, #A3D46A 0%, #89C742 50%, #BCE091 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .silver-gradient-text {
-    background: linear-gradient(180deg, #FFFFFF 0%, #A1ADB8 100%);
+    background: linear-gradient(180deg, #F7F8F4 0%, #A7AEA5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .bg-radial-glow {
-    background: radial-gradient(circle at 50% 30%, rgba(27, 100, 82, 0.15) 0%, rgba(8, 10, 11, 0) 70%);
+    background: radial-gradient(circle at 50% 30%, rgba(137, 199, 66, 0.12) 0%, rgba(10, 13, 10, 0) 70%);
   }
 
   .bg-grid-pattern {

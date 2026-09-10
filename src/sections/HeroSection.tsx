@@ -1,112 +1,110 @@
 import React from 'react';
-import { ArrowRight, MapPin, ShieldCheck, ChevronDown, Sparkles } from 'lucide-react';
+import { ArrowRight, MapPin, Compass, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { PROJECT_DATA } from '../data/projectData';
 
 interface HeroSectionProps {
-  onOpenBookingModal: () => void;
-  onExplorePlans: () => void;
+  onExplorePlots: () => void;
+  onViewPaymentPlans: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
-  onOpenBookingModal,
-  onExplorePlans,
+  onExplorePlots,
+  onViewPaymentPlans,
 }) => {
   return (
-    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-12 overflow-hidden">
-      {/* Background Image with Cinematic Dark Gradient Overlays */}
-      <div className="absolute inset-0 z-0">
+    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-between pt-28 pb-8 sm:pb-12 overflow-hidden bg-dark-bg">
+      {/* Cinematic Land & Landscape Visual */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85"
-          alt="Citizen Housing Society Modern Community"
-          className="w-full h-full object-cover object-center scale-105 animate-pulse-subtle"
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=85"
+          alt="Citizen Housing Society Open Land & Green Block"
+          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
           loading="eager"
         />
-        {/* Layered cinematic gradients for extreme luxury editorial readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 via-charcoal-950/75 to-charcoal-950/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950/90 via-charcoal-950/40 to-charcoal-950/80" />
-        <div className="absolute inset-0 bg-radial-glow opacity-80" />
+        {/* Layered Obsidian & Emerald Dark Gradients */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/85 to-dark-bg/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark-bg via-dark-bg/75 to-dark-bg/60" />
+        <div className="absolute inset-0 bg-radial-glow opacity-90 pointer-events-none" />
       </div>
 
-      {/* Hero Central Content */}
+      {/* Hero Content Area */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto w-full">
         <div className="max-w-3xl space-y-6 sm:space-y-8">
           
-          {/* Tag & Subline Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card border border-brand-500/40 text-xs text-charcoal-200 shadow-glow-emerald backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-brand-400 animate-ping" />
-            <span className="font-semibold tracking-wider text-brand-300 uppercase">
-              {PROJECT_DATA.brand.locationLine}
+          {/* Small Label Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-card border border-brand/40 text-xs text-neutral-soft shadow-brand-subtle backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-brand animate-ping" />
+            <span className="font-mono font-bold tracking-widest text-brand uppercase text-[11px] sm:text-xs">
+              CITIZEN HOUSING — GREEN BLOCK
             </span>
           </div>
 
           {/* Main Headline */}
-          <div className="space-y-2 sm:space-y-3">
-            <div className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-champagne-400 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-champagne-400" />
-              <span>{PROJECT_DATA.brand.subline}</span>
-            </div>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-              A Modern Address. <br />
-              <span className="emerald-gradient-text font-black">
-                A Smarter Investment.
+          <div className="space-y-2">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tightest text-neutral-warm leading-[1.06]">
+              OWN THE PLOT. <br />
+              <span className="brand-gradient-text font-black">
+                SHAPE YOUR FUTURE.
               </span>
             </h1>
           </div>
 
-          {/* Supporting Narrative */}
-          <p className="text-base sm:text-lg md:text-xl text-charcoal-200/95 max-w-2xl font-normal leading-relaxed text-balance">
+          {/* Supporting Text */}
+          <p className="text-base sm:text-lg md:text-xl text-neutral-muted max-w-2xl font-normal leading-relaxed text-balance">
             {PROJECT_DATA.brand.heroDescription}
           </p>
 
-          {/* Value Badges Strip */}
-          <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-charcoal-300 pt-1">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-              <ShieldCheck className="w-4 h-4 text-brand-400" />
+          {/* Core Value Pills */}
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs sm:text-sm text-neutral-soft pt-1">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-dark-card/90 border border-white/10 backdrop-blur-sm">
+              <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
               <span>0% Down Payment</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-champagne-400" />
-              <span>80 &amp; 120 Sq. Yards</span>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-dark-card/90 border border-white/10 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-brand flex-shrink-0" />
+              <span>80 &amp; 120 Sq. Yards Plots</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-sm">
-              <MapPin className="w-4 h-4 text-brand-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-dark-card/90 border border-white/10 backdrop-blur-sm">
+              <MapPin className="w-4 h-4 text-brand flex-shrink-0" />
               <span>Near DHA City &amp; Saima Midtown</span>
             </div>
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-2">
             <button
-              onClick={onExplorePlans}
-              className="group px-7 py-4 rounded-full bg-brand-600 hover:bg-brand-500 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-glow-emerald flex items-center justify-center gap-3 border border-brand-400/50"
+              onClick={onExplorePlots}
+              className="group px-7 py-4 rounded-full bg-brand hover:bg-brand-400 text-dark-bg font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-brand-glow flex items-center justify-center gap-2.5 active:scale-95"
             >
-              <span>Explore Payment Plans</span>
-              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
+              <span>Explore Plots</span>
+              <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
             </button>
 
             <button
-              onClick={onOpenBookingModal}
-              className="px-7 py-4 rounded-full glass-card hover:bg-white/10 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 border border-white/20 flex items-center justify-center gap-2"
+              onClick={onViewPaymentPlans}
+              className="px-7 py-4 rounded-full glass-dark hover:bg-white/10 text-neutral-warm font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-200 border border-white/15 flex items-center justify-center gap-2 active:scale-95"
             >
-              <span>Book a Consultation</span>
+              <span>View Payment Plans</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Hero Bottom Bar: Scroll Indicator & Location Quick Stat */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 flex items-end justify-between text-xs text-charcoal-400">
-        <div className="flex items-center gap-2 font-mono text-[11px]">
-          <MapPin className="w-3.5 h-3.5 text-brand-400" />
-          <span>M9 KARACHI–HYDERABAD MOTORWAY CORRIDOR</span>
+      {/* Hero Bottom Bar: Location Indicator & Animated Scroll */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-6 flex items-end justify-between text-xs text-neutral-muted">
+        <div className="flex items-center gap-2 font-mono text-[11px] sm:text-xs text-neutral-soft">
+          <Compass className="w-3.5 h-3.5 text-brand" />
+          <span className="tracking-wider uppercase font-semibold">
+            {PROJECT_DATA.brand.locationLine}
+          </span>
         </div>
 
         <a
-          href="#about"
-          className="hidden sm:flex items-center gap-2 hover:text-white transition-colors group cursor-pointer"
+          href="#facts"
+          className="hidden sm:flex items-center gap-1.5 hover:text-brand transition-colors group cursor-pointer text-[11px] font-mono uppercase tracking-widest text-neutral-muted"
         >
-          <span className="text-[11px] uppercase tracking-widest font-mono">Scroll to Discover</span>
-          <ChevronDown className="w-4 h-4 transform group-hover:translate-y-1 transition-transform text-brand-400" />
+          <span>Discover Land</span>
+          <ChevronDown className="w-4 h-4 transform group-hover:translate-y-1 transition-transform text-brand" />
         </a>
       </div>
     </section>

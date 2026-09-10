@@ -19,7 +19,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [plotSize, setPlotSize] = useState<'80 Yards' | '120 Yards' | 'Not Sure'>('80 Yards');
-  const [preferredContact, setPreferredContact] = useState<'Phone Call' | 'WhatsApp' | 'Email'>('WhatsApp');
+  const [preferredContact, setPreferredContact] = useState<'Phone' | 'WhatsApp' | 'Email'>('WhatsApp');
   const [message, setMessage] = useState('');
   const [consent, setConsent] = useState(true);
 
@@ -41,7 +41,6 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     e.preventDefault();
     setErrorMessage('');
 
-    // Validation
     if (!fullName.trim()) {
       setErrorMessage('Please enter your full name.');
       return;
@@ -57,11 +56,9 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
     setIsSubmitting(true);
 
-    // Simulate reliable lead capture / CRM dispatch
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      // Store in local storage for developer reference / lead log
       try {
         const existingLeads = JSON.parse(localStorage.getItem('citizen_housing_leads') || '[]');
         existingLeads.push({
@@ -78,7 +75,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
       } catch (err) {
         console.error('Storage error', err);
       }
-    }, 900);
+    }, 850);
   };
 
   const handleResetAndClose = () => {
@@ -90,26 +87,26 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
   const openWhatsAppDirect = () => {
     const text = encodeURIComponent(
-      `Hello Citizen Housing Team,\n\nI have registered an inquiry for ${plotSize} residential plot.\nName: ${fullName}\nPhone: ${phone}\nSource: ${sourceTitle}`
+      `Hello Citizen Housing Team,\n\nI have submitted an inquiry for ${plotSize} residential plot.\nName: ${fullName}\nPhone: ${phone}\nSource: ${sourceTitle}`
     );
     window.open(`https://wa.me/${PROJECT_DATA.brand.officialWhatsApp.replace(/[^0-9]/g, '')}?text=${text}`, '_blank');
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md animate-fadeIn">
       <div 
-        className="relative w-full max-w-xl bg-charcoal-900 border border-brand-500/30 rounded-3xl shadow-2xl overflow-hidden my-8 text-charcoal-100"
+        className="relative w-full max-w-xl bg-dark-card border-2 border-brand/40 rounded-3xl shadow-dark-luxury overflow-hidden my-8 text-neutral-warm"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-headline"
       >
-        {/* Top decorative gradient line */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-brand-500 via-champagne-400 to-brand-600" />
+        {/* Top brand accent bar */}
+        <div className="h-1.5 w-full bg-brand" />
 
         {/* Close Button */}
         <button
           onClick={handleResetAndClose}
-          className="absolute top-5 right-5 p-2 rounded-full bg-white/5 hover:bg-white/10 text-charcoal-300 hover:text-white transition-colors"
+          className="absolute top-5 right-5 p-2 rounded-full bg-white/5 hover:bg-white/10 text-neutral-muted hover:text-neutral-warm transition-colors"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -120,15 +117,15 @@ export const LeadModal: React.FC<LeadModalProps> = ({
             <div>
               {/* Modal Header */}
               <div className="mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900/60 border border-brand-500/40 text-brand-300 text-[11px] font-semibold tracking-wider uppercase mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/10 border border-brand/40 text-brand text-[11px] font-mono font-bold uppercase mb-2">
                   <span>Green Block</span>
                   <span className="text-white/40">•</span>
                   <span>0% Down Payment</span>
                 </div>
-                <h3 id="modal-headline" className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                <h3 id="modal-headline" className="text-2xl sm:text-3xl font-extrabold tracking-tight text-neutral-warm">
                   Book Your Residential Plot
                 </h3>
-                <p className="text-xs sm:text-sm text-charcoal-400 mt-1">
+                <p className="text-xs sm:text-sm text-neutral-muted mt-1">
                   Submit your details to receive full installment schedule, allotment paperwork, and personal developer consultation.
                 </p>
               </div>
@@ -143,8 +140,8 @@ export const LeadModal: React.FC<LeadModalProps> = ({
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-xs font-medium uppercase tracking-wider text-charcoal-300 mb-1.5">
-                    Full Name <span className="text-brand-400">*</span>
+                  <label className="block text-xs font-medium uppercase tracking-wider text-neutral-soft mb-1.5">
+                    Full Name <span className="text-brand">*</span>
                   </label>
                   <input
                     type="text"
@@ -152,15 +149,15 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="e.g. Muhammad Tariq"
-                    className="w-full px-4 py-3 rounded-xl bg-charcoal-850 border border-white/10 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 text-sm text-white placeholder-charcoal-500 transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-dark-bg border border-white/10 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand text-sm text-neutral-warm placeholder-neutral-faint transition-colors"
                   />
                 </div>
 
-                {/* Phone & Email Grid */}
+                {/* Phone & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium uppercase tracking-wider text-charcoal-300 mb-1.5">
-                      Phone / WhatsApp <span className="text-brand-400">*</span>
+                    <label className="block text-xs font-medium uppercase tracking-wider text-neutral-soft mb-1.5">
+                      Phone / WhatsApp <span className="text-brand">*</span>
                     </label>
                     <input
                       type="tel"
@@ -168,12 +165,12 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+92 300 1234567"
-                      className="w-full px-4 py-3 rounded-xl bg-charcoal-850 border border-white/10 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 text-sm text-white placeholder-charcoal-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-dark-bg border border-white/10 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand text-sm text-neutral-warm placeholder-neutral-faint transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium uppercase tracking-wider text-charcoal-300 mb-1.5">
+                    <label className="block text-xs font-medium uppercase tracking-wider text-neutral-soft mb-1.5">
                       Email Address (Optional)
                     </label>
                     <input
@@ -181,14 +178,14 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="tariq@example.com"
-                      className="w-full px-4 py-3 rounded-xl bg-charcoal-850 border border-white/10 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 text-sm text-white placeholder-charcoal-500 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-dark-bg border border-white/10 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand text-sm text-neutral-warm placeholder-neutral-faint transition-colors"
                     />
                   </div>
                 </div>
 
-                {/* Plot Size Selection */}
+                {/* Plot Size */}
                 <div>
-                  <label className="block text-xs font-medium uppercase tracking-wider text-charcoal-300 mb-1.5">
+                  <label className="block text-xs font-medium uppercase tracking-wider text-neutral-soft mb-1.5">
                     Plot Size Preference
                   </label>
                   <div className="grid grid-cols-3 gap-2.5">
@@ -199,8 +196,8 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                         onClick={() => setPlotSize(size)}
                         className={`py-2.5 px-3 rounded-xl text-xs font-medium border transition-all text-center ${
                           plotSize === size
-                            ? 'bg-brand-700/70 border-brand-400 text-white font-semibold shadow-inner'
-                            : 'bg-charcoal-850 border-white/10 text-charcoal-300 hover:text-white hover:border-white/20'
+                            ? 'bg-brand text-dark-bg font-bold border-brand'
+                            : 'bg-dark-bg border-white/10 text-neutral-muted hover:text-neutral-warm hover:border-white/20'
                         }`}
                       >
                         {size}
@@ -209,15 +206,15 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                   </div>
                 </div>
 
-                {/* Preferred Contact Method */}
+                {/* Contact Method */}
                 <div>
-                  <label className="block text-xs font-medium uppercase tracking-wider text-charcoal-300 mb-1.5">
+                  <label className="block text-xs font-medium uppercase tracking-wider text-neutral-soft mb-1.5">
                     Preferred Contact Method
                   </label>
                   <div className="grid grid-cols-3 gap-2.5">
                     {[
                       { id: 'WhatsApp', label: 'WhatsApp', icon: MessageSquare },
-                      { id: 'Phone Call', label: 'Phone Call', icon: Phone },
+                      { id: 'Phone', label: 'Phone Call', icon: Phone },
                       { id: 'Email', label: 'Email', icon: Mail },
                     ].map((m) => {
                       const Icon = m.icon;
@@ -229,8 +226,8 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                           onClick={() => setPreferredContact(m.id as any)}
                           className={`flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl text-xs border transition-all ${
                             isSelected
-                              ? 'bg-brand-900/80 border-brand-400 text-brand-200 font-semibold'
-                              : 'bg-charcoal-850 border-white/10 text-charcoal-400 hover:text-white'
+                              ? 'bg-brand/15 border-brand text-brand font-bold'
+                              : 'bg-dark-bg border-white/10 text-neutral-muted hover:text-neutral-warm'
                           }`}
                         >
                           <Icon className="w-3.5 h-3.5" />
@@ -243,15 +240,15 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
                 {/* Message */}
                 <div>
-                  <label className="block text-xs font-medium uppercase tracking-wider text-charcoal-300 mb-1.5">
+                  <label className="block text-xs font-medium uppercase tracking-wider text-neutral-soft mb-1.5">
                     Specific Questions / Remarks (Optional)
                   </label>
                   <textarea
                     rows={2}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="e.g. Inquiring about west-open or corner options in Green Block..."
-                    className="w-full px-4 py-2.5 rounded-xl bg-charcoal-850 border border-white/10 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-400 text-sm text-white placeholder-charcoal-500 transition-colors resize-none"
+                    placeholder="Inquiring about corner, west-open options, or site visit..."
+                    className="w-full px-4 py-2.5 rounded-xl bg-dark-bg border border-white/10 focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand text-sm text-neutral-warm placeholder-neutral-faint transition-colors resize-none"
                   />
                 </div>
 
@@ -261,9 +258,9 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                     type="checkbox"
                     checked={consent}
                     onChange={(e) => setConsent(e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded border-charcoal-600 bg-charcoal-800 text-brand-500 focus:ring-brand-400 focus:ring-offset-0"
+                    className="mt-1 w-4 h-4 rounded border-neutral-faint bg-dark-bg text-brand focus:ring-brand focus:ring-offset-0"
                   />
-                  <span className="text-xs text-charcoal-400 leading-relaxed">
+                  <span className="text-xs text-neutral-muted leading-relaxed">
                     I agree to be contacted regarding Citizen Housing pricing, schedule, and site consultation.
                   </span>
                 </label>
@@ -272,7 +269,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-3 py-3.5 px-6 rounded-xl bg-brand-600 hover:bg-brand-500 disabled:opacity-50 text-white text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all duration-200 shadow-glow-emerald flex items-center justify-center gap-2 border border-brand-400/40"
+                  className="w-full mt-3 py-3.5 px-6 rounded-xl bg-brand hover:bg-brand-400 disabled:opacity-50 text-dark-bg text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 shadow-brand-glow flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -291,31 +288,31 @@ export const LeadModal: React.FC<LeadModalProps> = ({
           ) : (
             /* Success State */
             <div className="py-8 text-center space-y-5 animate-fadeIn">
-              <div className="w-16 h-16 rounded-full bg-brand-900/60 border border-brand-400/40 text-brand-300 flex items-center justify-center mx-auto shadow-glow-emerald">
-                <CheckCircle2 className="w-8 h-8 text-brand-400" />
+              <div className="w-16 h-16 rounded-full bg-brand/20 border border-brand text-brand flex items-center justify-center mx-auto shadow-brand-glow">
+                <CheckCircle2 className="w-8 h-8 text-brand" />
               </div>
 
               <div>
-                <h4 className="text-2xl font-bold text-white mb-2">
+                <h4 className="text-2xl font-bold text-neutral-warm mb-2">
                   Inquiry Received Successfully
                 </h4>
-                <p className="text-sm text-charcoal-300 max-w-md mx-auto leading-relaxed">
-                  Thank you, <span className="text-white font-medium">{fullName}</span>. An official project representative for <span className="text-brand-300 font-medium">Citizen Housing (Green Block)</span> will connect with you via <span className="text-white font-medium">{preferredContact}</span> shortly.
+                <p className="text-sm text-neutral-muted max-w-md mx-auto leading-relaxed">
+                  Thank you, <span className="text-neutral-warm font-medium">{fullName}</span>. An official project representative for <span className="text-brand font-semibold">Citizen Housing (Green Block)</span> will connect with you via <span className="text-neutral-warm font-medium">{preferredContact}</span> shortly.
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-charcoal-850 border border-white/10 text-xs text-charcoal-300 text-left max-w-md mx-auto space-y-1.5">
+              <div className="p-4 rounded-2xl bg-dark-bg border border-brand/20 text-xs text-neutral-soft text-left max-w-md mx-auto space-y-1.5">
                 <div className="flex justify-between">
-                  <span className="text-charcoal-400">Selected Plot Size:</span>
-                  <span className="text-white font-medium">{plotSize}</span>
+                  <span className="text-neutral-muted">Selected Plot Size:</span>
+                  <span className="text-neutral-warm font-bold">{plotSize}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-charcoal-400">Contact Number:</span>
-                  <span className="text-white font-medium">{phone}</span>
+                  <span className="text-neutral-muted">Contact Number:</span>
+                  <span className="text-neutral-warm font-mono">{phone}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-charcoal-400">Installment Structure:</span>
-                  <span className="text-brand-400 font-medium">0% Down Payment Plan</span>
+                  <span className="text-neutral-muted">Installment Terms:</span>
+                  <span className="text-brand font-bold">0% Down Payment Plan</span>
                 </div>
               </div>
 
@@ -323,16 +320,16 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 <button
                   type="button"
                   onClick={openWhatsAppDirect}
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-brand-700/80 hover:bg-brand-600 text-white text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 border border-brand-400/40"
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-brand hover:bg-brand-400 text-dark-bg text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-brand-glow"
                 >
-                  <MessageSquare className="w-4 h-4 text-brand-300" />
+                  <MessageSquare className="w-4 h-4" />
                   <span>Start WhatsApp Chat Now</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={handleResetAndClose}
-                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-charcoal-200 text-xs font-semibold uppercase tracking-wider transition-colors"
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-neutral-soft text-xs font-semibold uppercase tracking-wider transition-colors"
                 >
                   Done
                 </button>

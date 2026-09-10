@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, MessageSquare, Phone, Mail, MapPin, ArrowUp, ExternalLink } from 'lucide-react';
+import { ShieldCheck, MessageSquare, Phone, Mail, ArrowUp } from 'lucide-react';
 import { PROJECT_DATA } from '../data/projectData';
 
 interface FooterProps {
@@ -18,37 +18,37 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="bg-charcoal-950 border-t border-white/10 pt-16 pb-12 text-charcoal-300 relative z-20">
+    <footer className="bg-dark-bg border-t border-white/10 pt-16 pb-12 text-neutral-muted relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-white/10">
+        {/* 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
           
           {/* Column 1: Brand (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-600 to-brand-900 border border-brand-400/30 flex items-center justify-center font-serif font-bold text-white shadow-glow-emerald">
+            <div className="flex items-center gap-2">
+              <span className="w-8 h-8 rounded-lg bg-brand text-dark-bg flex items-center justify-center font-bold text-sm shadow-brand-subtle">
                 C
               </span>
-              <span className="font-bold tracking-widest text-xl text-white">
-                CITIZEN<span className="text-brand-400 font-light ml-1">HOUSING</span>
+              <span className="font-extrabold tracking-widest text-xl text-neutral-warm">
+                CITIZEN<span className="text-brand font-light ml-1">HOUSING</span>
               </span>
             </div>
 
-            <p className="text-xs font-mono uppercase tracking-widest text-champagne-400 font-medium">
+            <p className="text-xs font-mono uppercase tracking-widest text-brand font-bold">
               {PROJECT_DATA.brand.subline}
             </p>
 
-            <p className="text-xs text-charcoal-400 leading-relaxed max-w-sm">
-              Citizen Housing Society (Green Block) is a strategically planned residential development on the M9 Karachi–Hyderabad Motorway, offering transparent 80 and 120 Sq. Yards plots with 0% down payment.
+            <p className="text-xs text-neutral-muted leading-relaxed max-w-sm">
+              Citizen Housing Society — Green Block is an exclusive residential plot development project on the M9 Karachi–Hyderabad Motorway, offering 80 and 120 Sq. Yards plots with 0% down payment.
             </p>
 
-            <div className="flex items-center gap-3 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-950 border border-brand-500/30 text-[10px] font-mono text-brand-300">
-                <ShieldCheck className="w-3.5 h-3.5 text-brand-400" />
-                <span>Transparent Ownership</span>
+            <div className="flex items-center gap-2.5 pt-1">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dark-card border border-brand/40 text-[10px] font-mono text-brand font-bold">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>100% Residential Plots</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-charcoal-900 border border-white/10 text-[10px] font-mono text-charcoal-400">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dark-card border border-white/10 text-[10px] font-mono text-neutral-muted">
                 <span>Green Block</span>
               </span>
             </div>
@@ -56,24 +56,25 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Column 2: Explore Navigation (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white font-mono">
-              Explore Project
+            <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-warm font-mono">
+              Explore
             </h4>
             <ul className="space-y-2 text-xs">
               {[
-                { label: 'Home & Overview', id: 'hero' },
-                { label: 'About Citizen Housing', id: 'about' },
-                { label: 'M9 Motorway Location', id: 'location' },
-                { label: 'Plot Categories (80 & 120)', id: 'plots' },
-                { label: 'Payment Plans & Schedules', id: 'payment-plans' },
-                { label: 'Community Facilities', id: 'facilities' },
-                { label: 'Master Plan Layout', id: 'master-plan' },
-                { label: 'Frequently Asked Questions', id: 'faq' },
+                { label: 'Home', id: 'hero' },
+                { label: 'About', id: 'about' },
+                { label: 'Location', id: 'location' },
+                { label: 'Plots', id: 'plots' },
+                { label: 'Payment Plans', id: 'payment-plans' },
+                { label: 'Facilities', id: 'facilities' },
+                { label: 'Master Plan', id: 'master-plan' },
+                { label: 'FAQ', id: 'faq' },
+                { label: 'Contact', id: 'contact' },
               ].map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => onNavigateSection(link.id)}
-                    className="hover:text-brand-300 transition-colors text-charcoal-400 hover:translate-x-1 inline-block transform duration-150"
+                    className="hover:text-brand transition-colors text-neutral-muted hover:translate-x-1 inline-block transform duration-150"
                   >
                     {link.label}
                   </button>
@@ -82,77 +83,61 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Column 3: Contact Details (3 cols) */}
+          {/* Column 3: Contact (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white font-mono">
-              Sales &amp; Consultation
+            <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-warm font-mono">
+              Contact
             </h4>
             <ul className="space-y-3 text-xs">
               <li>
-                <span className="text-[10px] uppercase font-mono tracking-wider text-charcoal-500 block">
-                  Project Site Location
+                <span className="text-[10px] uppercase font-mono tracking-wider text-neutral-faint block">
+                  Project Location
                 </span>
-                <p className="text-charcoal-300 mt-0.5">{PROJECT_DATA.brand.siteLocation}</p>
+                <p className="text-neutral-soft mt-0.5">{PROJECT_DATA.brand.siteLocation}</p>
               </li>
               <li>
-                <span className="text-[10px] uppercase font-mono tracking-wider text-charcoal-500 block">
-                  Phone Consultation
+                <span className="text-[10px] uppercase font-mono tracking-wider text-neutral-faint block">
+                  Phone
                 </span>
-                <a href={`tel:${PROJECT_DATA.brand.displayPhone}`} className="text-charcoal-300 hover:text-brand-300 transition-colors font-mono">
+                <a href={`tel:${PROJECT_DATA.brand.displayPhone}`} className="text-neutral-soft hover:text-brand transition-colors font-mono">
                   {PROJECT_DATA.brand.displayPhone}
                 </a>
               </li>
               <li>
-                <span className="text-[10px] uppercase font-mono tracking-wider text-charcoal-500 block">
-                  Sales WhatsApp Desk
+                <span className="text-[10px] uppercase font-mono tracking-wider text-neutral-faint block">
+                  WhatsApp
                 </span>
                 <a
                   href={`https://wa.me/${PROJECT_DATA.brand.officialWhatsApp.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-400 hover:text-brand-300 transition-colors font-mono flex items-center gap-1 mt-0.5"
+                  className="text-brand hover:text-brand-300 transition-colors font-mono flex items-center gap-1 mt-0.5 font-semibold"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </li>
               <li>
-                <span className="text-[10px] uppercase font-mono tracking-wider text-charcoal-500 block">
-                  Official Inquiries
+                <span className="text-[10px] uppercase font-mono tracking-wider text-neutral-faint block">
+                  Email
                 </span>
-                <a href={`mailto:${PROJECT_DATA.brand.displayEmail}`} className="text-charcoal-300 hover:text-brand-300 transition-colors">
+                <a href={`mailto:${PROJECT_DATA.brand.displayEmail}`} className="text-neutral-soft hover:text-brand transition-colors">
                   {PROJECT_DATA.brand.displayEmail}
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Legal & Compliance (2 cols) */}
+          {/* Column 4: Legal (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white font-mono">
-              Legal &amp; Policy
+            <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-warm font-mono">
+              Legal
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <button
-                  onClick={onOpenDisclaimerModal}
-                  className="hover:text-brand-300 transition-colors text-charcoal-400 text-left"
-                >
-                  Legal Disclaimer
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={onOpenDisclaimerModal}
-                  className="hover:text-brand-300 transition-colors text-charcoal-400 text-left"
-                >
-                  Terms &amp; Conditions
-                </button>
-              </li>
-              <li>
-                <button
                   onClick={onOpenPrivacyModal}
-                  className="hover:text-brand-300 transition-colors text-charcoal-400 text-left"
+                  className="hover:text-brand transition-colors text-neutral-muted text-left"
                 >
                   Privacy Policy
                 </button>
@@ -160,9 +145,17 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={onOpenDisclaimerModal}
-                  className="hover:text-brand-300 transition-colors text-charcoal-400 text-left"
+                  className="hover:text-brand transition-colors text-neutral-muted text-left"
                 >
-                  Due Diligence Notice
+                  Terms &amp; Conditions
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onOpenDisclaimerModal}
+                  className="hover:text-brand transition-colors text-neutral-muted text-left"
+                >
+                  Disclaimer
                 </button>
               </li>
             </ul>
@@ -170,7 +163,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="pt-4">
               <button
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-1.5 p-2 rounded-xl bg-charcoal-900 border border-white/10 hover:border-white/20 text-xs text-charcoal-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 p-2 rounded-xl bg-dark-card border border-white/10 hover:border-brand/40 text-xs text-neutral-soft hover:text-brand transition-colors"
                 title="Scroll back to top"
               >
                 <ArrowUp className="w-4 h-4" />
@@ -181,20 +174,20 @@ export const Footer: React.FC<FooterProps> = ({
 
         </div>
 
-        {/* Bottom Bar with Mandatory Legal Disclaimer Note */}
+        {/* Bottom Exact Developer Disclaimer */}
         <div className="pt-8 space-y-4">
-          <p className="text-[11px] text-charcoal-400 leading-relaxed bg-charcoal-900/60 p-4 rounded-2xl border border-white/5">
-            <strong className="text-charcoal-300">Disclaimer:</strong> Information shown on this website is subject to change. Please verify current pricing, approvals, availability and terms directly with Citizen Builders &amp; Developers prior to financial commitments. Visual renders and layouts represent conceptual designs and may be modified during civil implementation.
+          <p className="text-[11px] text-neutral-muted leading-relaxed bg-dark-card p-4 rounded-2xl border border-white/5">
+            <strong className="text-neutral-soft">Disclaimer:</strong> Information displayed on this website is subject to change. Please verify current pricing, availability, documentation, approvals and terms with the developer before making any decision.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-charcoal-400 gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-faint gap-3 pt-1">
             <div>
-              © 2026 <strong className="text-white">Citizen Housing</strong>. A Project of Citizen Builders &amp; Developers. All rights reserved.
+              © 2026 <strong className="text-neutral-soft">Citizen Housing</strong>. A Project of Citizen Builders &amp; Developers. All rights reserved.
             </div>
             <div className="flex items-center gap-4 text-[11px]">
-              <button onClick={onOpenPrivacyModal} className="hover:text-white transition-colors">Privacy Policy</button>
+              <button onClick={onOpenPrivacyModal} className="hover:text-brand transition-colors">Privacy Policy</button>
               <span>•</span>
-              <button onClick={onOpenDisclaimerModal} className="hover:text-white transition-colors">Disclaimer &amp; Due Diligence</button>
+              <button onClick={onOpenDisclaimerModal} className="hover:text-brand transition-colors">Terms &amp; Disclaimer</button>
             </div>
           </div>
         </div>

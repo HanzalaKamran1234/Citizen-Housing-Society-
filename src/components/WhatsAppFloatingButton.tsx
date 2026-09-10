@@ -17,15 +17,15 @@ export const WhatsAppFloatingButton: React.FC = () => {
     <div className="fixed bottom-20 sm:bottom-8 right-4 sm:right-6 z-40 flex items-end gap-3 pointer-events-none">
       {/* Tooltip prompt (dismissable) */}
       {showTooltip && (
-        <div className="hidden sm:flex items-center gap-2 p-3 rounded-2xl bg-charcoal-900/95 border border-brand-500/40 text-xs text-white shadow-2xl backdrop-blur-md pointer-events-auto animate-fadeIn">
-          <span className="w-2 h-2 rounded-full bg-brand-400 animate-ping" />
+        <div className="hidden sm:flex items-center gap-2 p-3 rounded-2xl bg-dark-card border border-brand/40 text-xs text-neutral-warm shadow-2xl backdrop-blur-md pointer-events-auto animate-fadeIn">
+          <span className="w-2 h-2 rounded-full bg-brand animate-ping" />
           <div className="flex flex-col">
-            <span className="font-semibold text-brand-300">Have questions?</span>
-            <span className="text-charcoal-300 text-[11px]">Chat with our project sales advisor</span>
+            <span className="font-bold text-brand">Have questions?</span>
+            <span className="text-neutral-muted text-[11px]">Chat with our project sales advisor</span>
           </div>
           <button
             onClick={() => setShowTooltip(false)}
-            className="p-1 rounded-md text-charcoal-400 hover:text-white transition-colors ml-1"
+            className="p-1 rounded-md text-neutral-muted hover:text-neutral-warm transition-colors ml-1"
             aria-label="Dismiss prompt"
           >
             <X className="w-3.5 h-3.5" />
@@ -37,12 +37,12 @@ export const WhatsAppFloatingButton: React.FC = () => {
       <button
         onClick={handleWhatsAppClick}
         aria-label="Chat With Sales on WhatsApp"
-        className="pointer-events-auto group relative flex items-center justify-center p-3.5 sm:p-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 border border-emerald-400/50"
+        className="pointer-events-auto group relative flex items-center justify-center p-3.5 sm:p-4 rounded-full bg-brand hover:bg-brand-400 text-dark-bg shadow-brand-glow transition-all duration-300 hover:scale-105 active:scale-95 border border-brand-300/40"
       >
-        <span className="absolute inset-0 rounded-full bg-emerald-500 opacity-20 group-hover:opacity-40 animate-ping pointer-events-none" />
+        <span className="absolute inset-0 rounded-full bg-brand opacity-25 group-hover:opacity-45 animate-ping pointer-events-none" />
         <MessageSquare className="w-6 h-6 fill-current" />
-        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-semibold uppercase tracking-wider pl-0 group-hover:pl-2">
-          Chat With Sales
+        <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-black uppercase tracking-wider pl-0 group-hover:pl-2">
+          CHAT WITH SALES
         </span>
       </button>
     </div>

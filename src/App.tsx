@@ -4,16 +4,19 @@ import { HeroSection } from './sections/HeroSection';
 import { TrustBar } from './sections/TrustBar';
 import { AboutSection } from './sections/AboutSection';
 import { LocationSection } from './sections/LocationSection';
-import { WhyCitizenSection } from './sections/WhyCitizenSection';
+import { WhyOwnAPlotSection } from './sections/WhyOwnAPlotSection';
 import { PlotOptionsSection } from './sections/PlotOptionsSection';
 import { PaymentPlansSection } from './sections/PaymentPlansSection';
 import { FacilitiesSection } from './sections/FacilitiesSection';
+import { SecuritySection } from './sections/SecuritySection';
 import { InvestmentSection } from './sections/InvestmentSection';
+import { MasterPlanSection } from './sections/MasterPlanSection';
 import { DocumentationSection } from './sections/DocumentationSection';
 import { PartnersSection } from './sections/PartnersSection';
-import { MasterPlanSection } from './sections/MasterPlanSection';
 import { GallerySection } from './sections/GallerySection';
+import { HowItWorksSection } from './sections/HowItWorksSection';
 import { FAQSection } from './sections/FAQSection';
+import { FinalCTASection } from './sections/FinalCTASection';
 import { ContactSection } from './sections/ContactSection';
 import { Footer } from './components/Footer';
 
@@ -61,15 +64,18 @@ export const App: React.FC = () => {
   useEffect(() => {
     const sectionIds = [
       'hero',
+      'facts',
       'about',
       'location',
       'plots',
       'payment-plans',
       'facilities',
+      'security',
       'investment',
-      'documentation',
       'master-plan',
+      'documentation',
       'gallery',
+      'how-it-works',
       'faq',
       'contact'
     ];
@@ -94,7 +100,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-charcoal-950 text-charcoal-100 flex flex-col font-sans selection:bg-brand-600 selection:text-white relative">
+    <div className="min-h-screen bg-dark-bg text-neutral-warm flex flex-col font-sans selection:bg-brand selection:text-dark-bg relative">
       
       {/* Top Sticky Navigation */}
       <Navbar
@@ -104,27 +110,30 @@ export const App: React.FC = () => {
       />
 
       <main className="flex-grow">
-        {/* 1. Hero Section */}
+        {/* 01 — HERO */}
         <HeroSection
-          onOpenBookingModal={() => openLeadModal(undefined, 'Hero Book Consultation')}
-          onExplorePlans={() => navigateToSection('payment-plans')}
+          onExplorePlots={() => navigateToSection('plots')}
+          onViewPaymentPlans={() => navigateToSection('payment-plans')}
         />
 
-        {/* 2. Quick Trust Bar */}
+        {/* 02 — KEY PROJECT FACTS */}
         <TrustBar />
 
-        {/* 3. About Project */}
+        {/* 03 — ABOUT CITIZEN HOUSING */}
         <AboutSection
           onOpenBookingModal={() => openLeadModal(undefined, 'About Section Inquire')}
+          onExplorePlots={() => navigateToSection('plots')}
         />
 
-        {/* 4. Location Section */}
+        {/* 04 — LOCATION */}
         <LocationSection />
 
-        {/* 5. Why Citizen Housing */}
-        <WhyCitizenSection />
+        {/* 05 — WHY OWN A PLOT */}
+        <WhyOwnAPlotSection
+          onExplorePlots={() => navigateToSection('plots')}
+        />
 
-        {/* 6. Plot Options (80 vs 120 side-by-side) */}
+        {/* 06 — PLOT OPTIONS */}
         <PlotOptionsSection
           onSelectPlot={(plotId) => {
             setSelectedPlanId(plotId);
@@ -132,60 +141,73 @@ export const App: React.FC = () => {
           }}
         />
 
-        {/* 7. Payment Plans & Extra Charges Block */}
+        {/* 07 — PAYMENT PLANS & 08 — ADDITIONAL CHARGES */}
         <PaymentPlansSection
           selectedPlanId={selectedPlanId}
           onOpenBookingModal={(size) => openLeadModal(size, 'Payment Plans Section')}
         />
 
-        {/* 8. Facilities */}
+        {/* 09 — FACILITIES */}
         <FacilitiesSection />
 
-        {/* 9. Investment Proposition */}
+        {/* 10 — SECURITY (Dedicated Section) */}
+        <SecuritySection />
+
+        {/* 11 — INVESTMENT / OWNERSHIP OPPORTUNITY */}
         <InvestmentSection
           onOpenBookingModal={() => openLeadModal(undefined, 'Investment Section')}
         />
 
-        {/* 10. Documentation & Approvals */}
-        <DocumentationSection
-          onOpenDocumentationModal={() => setIsDocumentationModalOpen(true)}
-        />
-
-        {/* 11. Development Partners */}
-        <PartnersSection />
-
-        {/* 12. Master Plan */}
+        {/* 12 — MASTER PLAN */}
         <MasterPlanSection
           onOpenMasterPlanModal={() => setIsMasterPlanModalOpen(true)}
           onOpenBookingModal={() => openLeadModal(undefined, 'Master Plan Section')}
         />
 
-        {/* 13. Gallery */}
+        {/* 13 — PROJECT DOCUMENTATION */}
+        <DocumentationSection
+          onOpenDocumentationModal={() => setIsDocumentationModalOpen(true)}
+        />
+
+        {/* 14 — DEVELOPMENT PARTNERS */}
+        <PartnersSection />
+
+        {/* 15 — GALLERY */}
         <GallerySection />
 
-        {/* 14. FAQ */}
+        {/* 16 — HOW IT WORKS */}
+        <HowItWorksSection
+          onOpenBookingModal={() => openLeadModal(undefined, 'How It Works Section')}
+        />
+
+        {/* 17 — FAQ */}
         <FAQSection />
 
-        {/* 15. Contact Section */}
+        {/* 18 — FINAL CTA */}
+        <FinalCTASection
+          onOpenBookingModal={() => openLeadModal(undefined, 'Final CTA Section')}
+        />
+
+        {/* CONTACT PAGE SECTION */}
         <ContactSection />
       </main>
 
-      {/* 16. Multi-Column Footer */}
+      {/* 19 — FOOTER */}
       <Footer
         onOpenPrivacyModal={() => setIsPrivacyModalOpen(true)}
         onOpenDisclaimerModal={() => setIsLegalModalOpen(true)}
         onNavigateSection={navigateToSection}
       />
 
-      {/* Floating WhatsApp CTA button */}
+      {/* Persistent WhatsApp Floating CTA */}
       <WhatsAppFloatingButton />
 
-      {/* Mobile persistent bottom CTA */}
+      {/* Persistent Mobile Sticky Action Bar */}
       <MobileStickyBar
         onOpenBookingModal={() => openLeadModal(undefined, 'Mobile Sticky Bar')}
       />
 
-      {/* Modals */}
+      {/* Modals & Dialogs */}
       <LeadModal
         isOpen={isLeadModalOpen}
         onClose={() => setIsLeadModalOpen(false)}

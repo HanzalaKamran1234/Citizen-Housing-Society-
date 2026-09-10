@@ -16,11 +16,11 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenBookingM
   };
 
   return (
-    <aside aria-label="Quick Action Bar" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-charcoal-950/95 border-t border-white/10 px-4 py-2.5 backdrop-blur-xl pb-[max(0.625rem,env(safe-area-inset-bottom))] shadow-2xl">
+    <aside aria-label="Mobile Quick Actions" className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-dark-bg/95 border-t border-brand/20 px-4 py-2.5 backdrop-blur-xl pb-[max(0.625rem,env(safe-area-inset-bottom))] shadow-2xl">
       <div className="grid grid-cols-2 gap-2.5 max-w-sm mx-auto">
         <button
           onClick={handleWhatsApp}
-          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-charcoal-800 border border-emerald-500/30 text-emerald-400 font-semibold text-xs tracking-wider uppercase active:scale-95 transition-transform"
+          className="flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-dark-card border border-brand/40 text-brand font-bold text-xs tracking-wider uppercase active:scale-95 transition-transform"
         >
           <MessageSquare className="w-4 h-4" />
           <span>WhatsApp Sales</span>
@@ -28,7 +28,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onOpenBookingM
 
         <button
           onClick={onOpenBookingModal}
-          className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-brand-600 border border-brand-400/40 text-white font-semibold text-xs tracking-wider uppercase shadow-glow-emerald active:scale-95 transition-transform"
+          className="flex items-center justify-center gap-1.5 py-3 px-3 rounded-xl bg-brand border border-brand/50 text-dark-bg font-extrabold text-xs tracking-wider uppercase shadow-brand-glow active:scale-95 transition-transform"
         >
           <Calendar className="w-4 h-4" />
           <span>Book Your Plot</span>
